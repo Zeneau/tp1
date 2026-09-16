@@ -1,11 +1,49 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import * as Plot from "@observablehq/plot";
+import penguins from "../assets/data/penguins.json";
+import diamonds from "../assets/data/diamonds.json";
+import olympians from "../assets/data/olympians.json";
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import PlotFigure from "../components/PlotFigure.astro";
 ---
 
 <Layout>
-	<Welcome />
+	<PlotFigure options={{
+  color: { legend: true },
+  facet: { data: penguins, x: "island" },
+  marks: [
+    Plot.dot(penguins, {
+      x: "culmen_length_mm",
+      y: "body_mass_g",
+      fill: "species",
+      r: "flipper_length_mm"
+    })
+  ]
+}}/>
+
+  <PlotFigure options={{
+    y: {
+      grid: true
+    },
+    marks: [
+      Plot.ruleY([0]),
+      Plot.barY(diamonds, {
+        x: "carat",
+        y: "price",
+        sort: { x: "y", reverse: true }
+      })
+    ]
+  }}/>
+
+  <PlotFigure options={{
+  color: { legend: true },
+  marks: [
+    Plot.dot(olympians, {
+      x: "height",
+      y: "weight",
+      fill: "sex",
+        r: 3
+    })
+  ]
+}}/>
 </Layout>

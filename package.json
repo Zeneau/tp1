@@ -12,9 +12,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.3.2"
+    "@observablehq/plot": "^0.6.17",
+    "astro": "^7.3.2",
+    "jsdom": "^30.0.1"
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "@types/jsdom": "^30.0.0"
   }
 }
