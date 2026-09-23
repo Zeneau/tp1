@@ -1,0 +1,21 @@
+---
+interface Props {
+	active?: "Adelie" | "Gentoo" | "Chinstrap";
+}
+
+const { active } = Astro.props;
+const links = ["Adelie", "Gentoo", "Chinstrap"] as const;
+---
+
+<nav class="species-nav" aria-label="Navigation entre les espèces">
+	<a href="/species/" class:list={{ active: !active }}>Comparer</a>
+	{links.map((species) => (
+		<a href={`/species/${species}`} class:list={{ active: active === species }}>{species}</a>
+	))}
+</nav>
+
+<style>
+	.species-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 64px; }
+	.species-nav a { padding: 9px 14px; color: #31545a; text-decoration: none; border: 1px solid #b9d0cc; border-radius: 999px; transition: background .2s ease, color .2s ease; }
+	.species-nav a:hover, .species-nav a.active { color: #fff; background: #31545a; }
+</style>

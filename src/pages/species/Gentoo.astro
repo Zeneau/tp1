@@ -1,23 +1,20 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import GraphicSpecies from "../../components/GraphicSpecies.astro";
-import penguins from "../../assets/data/penguins.json";
 import SpeciesNav from "../../components/SpeciesNav.astro";
-
-const penguinsAdelie = penguins.filter(({ species }) => species === "Adelie");
 ---
 
-<Layout title="Adelie | Penguins">
+<Layout title="Gentoo | Penguins">
 	<main class="species-page">
-		<SpeciesNav active="Adelie" />
+		<SpeciesNav active="Gentoo" />
 		<header class="page-heading">
 			<p class="eyebrow">Pygoscelis</p>
-			<h1>Adelie</h1>
-			<p>Mesures des manchots Adelie.</p>
+			<h1>Gentoo</h1>
+			<p>Mesures des manchots Gentoo.</p>
 		</header>
-		<section class="chart-panel" aria-labelledby="adelie-title">
-			<h2 id="adelie-title">Longueur du culmen et masse corporelle</h2>
-			<GraphicSpecies species="Adelie" />
+		<section class="chart-panel" aria-labelledby="gentoo-title">
+			<h2 id="gentoo-title">Longueur du culmen et masse corporelle</h2>
+			<GraphicSpecies species="Gentoo" />
 		</section>
 	</main>
 </Layout>
