@@ -1,0 +1,32 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import GraphicSpecies from "../../components/GraphicSpecies.astro";
+import penguins from "../../assets/data/penguins.json";
+
+const penguinsAdelie = penguins.filter(({ species }) => species === "Adelie");
+---
+
+<Layout title="Adelie | Penguins">
+	<main class="species-page">
+		<header class="page-heading">
+			<p class="eyebrow">Pygoscelis</p>
+			<h1>Adelie</h1>
+			<p>Mesures des manchots Adelie.</p>
+		</header>
+		<section class="chart-panel" aria-labelledby="adelie-title">
+			<h2 id="adelie-title">Longueur du culmen et masse corporelle</h2>
+			<GraphicSpecies species="Adelie" />
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.species-page { max-width: 1100px; margin: 0 auto; padding: 48px 24px 64px; }
+	.page-heading { margin-bottom: 32px; }
+	.eyebrow { margin: 0 0 8px; color: #d45d3c; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+	h1 { margin: 0; color: #19343a; font-size: clamp(2.5rem, 7vw, 5rem); line-height: .95; }
+	.page-heading > p:last-child { color: #53676a; font-size: 1.1rem; }
+	.chart-panel { padding: 24px; background: #fffdf7; border: 1px solid #d7e1d8; border-radius: 8px; }
+	h2 { color: #19343a; font-size: 1.25rem; }
+	@media (max-width: 600px) { .species-page { padding: 24px 16px 40px; } .chart-panel { padding: 12px; overflow-x: auto; } }
+</style>
